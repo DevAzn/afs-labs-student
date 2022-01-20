@@ -1,10 +1,10 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: app-deployment
+  name: db-deployment
   namespace: jjennings
   labels:
-    app: app
+    app: db
 spec:
   replicas: 1
   strategy:
@@ -12,17 +12,17 @@ spec:
   minReadySeconds: 20
   selector:
     matchLabels:
-      app: app
+      app: db
   template:
     metadata:
       labels:
-        app: app
+        app: db
     spec:
       containers:
       - envFrom:
         - secretRef:
             name: db-secret
-        name: app-deployment
-        image: docker pull harbor.dev.afsmtddso.com/jjennings-harbor-project/app@sha256:a876941414642e8adabfc3ede7ba22523220764e34778cba56f8dd83dd05ce9e
-        ports:
-        - containerPort: 5000
+        name: db-deployment
+        image: docker pull harbor.dev.afsmtddso.com/jjennings-harbor-project/db@sha256:0a4d6a6114f32e50aa98d21dc49705778a9327f1364cb581702cb133c555f247
+        ports: 
+        - containerPort: 5432
