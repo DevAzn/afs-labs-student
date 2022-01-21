@@ -1,3 +1,4 @@
+-- Here is my comment for you 
 --
 -- PostgreSQL database dump
 --
